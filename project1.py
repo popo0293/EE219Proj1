@@ -12,7 +12,7 @@ cat_sum = []
 data = []
 
 for i in range(len(categories)):
-    temp = fetch_20newsgroups(categories=[categories[i]], shuffle=True, random_state=42)
+    temp = fetch_20newsgroups(subset='all', categories=[categories[i]], shuffle=True, random_state=42)
     data.append(temp)
     cat_sum.append(len(temp.data))
 
@@ -25,5 +25,6 @@ pl.xlabel("Set Size")
 pl.ylabel("Classes")
 pl.title("Size of data set for each class")
 pl.yticks(y_pos, categories)
+pl.gca().invert_yaxis()
 pl.tight_layout()
 plt.show(block=True)
