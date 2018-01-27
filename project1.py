@@ -12,7 +12,7 @@ cat_sum = []
 data = []
 
 for i in range(len(categories)):
-    temp = fetch_20newsgroups(subset='all', categories=[categories[i]], shuffle=True, random_state=42)
+    temp = fetch_20newsgroups(subset='train', categories=[categories[i]], shuffle=True, random_state=42)
     data.append(temp)
     cat_sum.append(len(temp.data))
 
@@ -23,7 +23,7 @@ pl.figure(1)
 pl.barh(y_pos, cat_sum, align='center', color='blue', ecolor='black')
 pl.xlabel("Set Size")
 pl.ylabel("Classes")
-pl.title("Size of data set for each class")
+pl.title("Size of training set for each class")
 pl.yticks(y_pos, categories)
 pl.gca().invert_yaxis()
 pl.tight_layout()
