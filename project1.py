@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pylab as pl
 from sklearn.datasets import fetch_20newsgroups
 
 categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware',
@@ -17,9 +18,12 @@ for i in range(len(categories)):
 
 print(cat_sum)
 
-plt.figure(1)
-plt.title("Size of data set for each class")
-plt.xlabel(categories)
-plt.ylabel("Numbers")
-
+y_pos = np.arange(len(categories))
+pl.figure(1)
+pl.barh(y_pos, cat_sum, align='center', color='blue', ecolor='black')
+pl.xlabel("Set Size")
+pl.ylabel("Classes")
+pl.title("Size of data set for each class")
+pl.yticks(y_pos, categories)
+pl.tight_layout()
 plt.show(block=True)
