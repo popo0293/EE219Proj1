@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB, GaussianNB
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.decomposition import NMF
+from nltk.stem.snowball import SnowballStemmer
 
 
 class SparseToDenseArray(BaseEstimator, TransformerMixin):
