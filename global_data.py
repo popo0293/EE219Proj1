@@ -1,6 +1,11 @@
 import numpy as np
 import logging
+from logging.config import fileConfig
 from sklearn.datasets import fetch_20newsgroups
+
+# create logger
+fileConfig('logging_config.ini')
+logger = logging.getLogger()
 
 # globals
 
@@ -14,7 +19,7 @@ train_data = []             # training data of each class 0-7
 cat_sum_test = []           # testing data size of each class 0-7
 test_data = []              # testing data of each class 0-7
 
-logging.info("loading data")
+logging.debug("loading data")
 
 for i in range(len(categories)):
     temp = fetch_20newsgroups(subset='train', categories=[categories[i]], shuffle=True, random_state=42)
@@ -23,3 +28,5 @@ for i in range(len(categories)):
     temp = fetch_20newsgroups(subset='test', categories=[categories[i]], shuffle=True, random_state=42)
     test_data.append(temp)
     cat_sum_test.append(len(temp.data))
+
+logging.debug("loading finished")
