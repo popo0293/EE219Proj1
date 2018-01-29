@@ -14,7 +14,8 @@ string_of_each_class = []
 for i in range(len(all_data.target_names)):
     string_of_each_class.append("")
 
-for i in range(len(all_data.data)):
+for i in range(len(all_data.data)
+               ):
     string_of_each_class[all_data.target[i]] = string_of_each_class[all_data.target[i]] + " " + all_data.data[i]
 
 logging.info("vectorizing")
@@ -46,8 +47,8 @@ for name in cat_top10:
     index = all_data.target_names.index(name)
     arr = M_train_tficf.toarray()[index]
     sig_terms = np.argsort(arr)[-10:][-1::-1]
-    logging.info(name)
-    logging.info(sig_terms)
+    logging.debug(name)
+    logging.debug(sig_terms)
     print("Top 10 most significant terms in class %s are:" % name)
     for i in sig_terms:
         print(vectorizer.get_feature_names()[i])
