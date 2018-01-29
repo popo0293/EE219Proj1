@@ -7,16 +7,16 @@ logging.info("Problem c")
 start = timer()
 
 logging.info("loading training data")
-all_data = fetch_20newsgroups(subset='all', shuffle=True, random_state=42)
+all_class_data = fetch_20newsgroups(subset='all', shuffle=True, random_state=42)
 
 logging.info("concatenating data")
 string_of_each_class = []
-for i in range(len(all_data.target_names)):
+for i in range(len(all_class_data.target_names)):
     string_of_each_class.append("")
 
-for i in range(len(all_data.data)
-               ):
-    string_of_each_class[all_data.target[i]] = string_of_each_class[all_data.target[i]] + " " + all_data.data[i]
+for i in range(len(all_class_data.data)):
+    string_of_each_class[all_class_data.target[i]] = string_of_each_class[all_class_data.target[i]]\
+                                                     + " " + all_class_data.data[i]
 
 logging.info("vectorizing")
 # tfidf_vectorizer = TfidfVectorizer(min_df=MIN_DF, analyzer="word", stop_words=ENGLISH_STOP_WORDS,
@@ -30,7 +30,7 @@ M_train_tficf = tfidf_transformer.fit_transform(M)
 print("With min_df = %d, (all classes, terms extracted): " % MIN_DF, M_train_tficf.shape)
 
 duration = timer()-start
-print("Computation Time in secs: ", duration)
+logging.debug("Computation Time in secs: ", duration)
 
 ''' debugging block
 arra = M.toarray()[all_data.target_names.index("soc.religion.christian"), :]
@@ -44,7 +44,7 @@ cat_top10 = ["comp.sys.ibm.pc.hardware", "comp.sys.mac.hardware", "misc.forsale"
 print("With min_df = %d" % MIN_DF)
 
 for name in cat_top10:
-    index = all_data.target_names.index(name)
+    index = all_class_data.target_names.index(name)
     arr = M_train_tficf.toarray()[index]
     sig_terms = np.argsort(arr)[-10:][-1::-1]
     logging.debug(name)
