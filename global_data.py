@@ -8,7 +8,7 @@ fileConfig('logging_config.ini')
 logger = logging.getLogger()
 
 # globals
-MIN_DF = 2
+MIN_DF = 5
 
 categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware',
               'comp.sys.mac.hardware', 'rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']
