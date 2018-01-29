@@ -8,6 +8,7 @@ fileConfig('logging_config.ini')
 logger = logging.getLogger()
 
 # globals
+MIN_DF = 2
 
 categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware',
               'comp.sys.mac.hardware', 'rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']
@@ -15,10 +16,10 @@ categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardw
 cat_comp = categories[:4]   # Computer Technologies
 cat_rec = categories[4:]    # Recreational Activities
 
-logging.debug("loading data")
+logging.info("loading data")
 
 train_data = fetch_20newsgroups(subset='train', categories=categories, shuffle=True, random_state=42)
 test_data = fetch_20newsgroups(subset='test', categories=categories, shuffle=True, random_state=42)
 
-logging.debug("loading finished")
+logging.info("loading finished")
 

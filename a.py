@@ -2,7 +2,7 @@ import numpy as np
 import pylab as pl
 from global_data import *
 
-logging.debug("Problem a")
+logging.info("Problem a")
 
 cat_sum_train = []          # training data size of each class 0-7
 cat_sum_test = []           # testing data size of each class 0-7
@@ -36,4 +36,4 @@ for i in cat_sum_train:
 
 print(sum)
 
-logging.debug("finished Problem a")
+logging.info("finished Problem a")
