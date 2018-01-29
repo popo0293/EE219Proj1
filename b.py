@@ -5,16 +5,16 @@ from utils import *
 logging.debug("Problem b")
 
 start = timer()
-vectorizer_2 = CountVectorizer(min_df=2, stop_words=ENGLISH_STOP_WORDS, tokenizer=stem_and_tokenize)
+vectorizer_2 = CountVectorizer(min_df=1, stop_words=ENGLISH_STOP_WORDS, tokenizer=stem_and_tokenize)
 X_2 = vectorizer_2.fit_transform(train_data.data)
 X_2_train_tfidf = tfidf_transformer.fit_transform(X_2)
 print(X_2_train_tfidf.shape)
-
+'''
 vectorizer_5 = CountVectorizer(min_df=5, stop_words=ENGLISH_STOP_WORDS, tokenizer=stem_and_tokenize)
 X_5 = vectorizer_5.fit_transform(train_data)
 X_5_train_tfidf = tfidf_transformer.fit_transform(X_5)
 print(X_5_train_tfidf.shape)
-
+'''
 duration = timer()-start
 print("Computation Time in secs: ", duration)
 

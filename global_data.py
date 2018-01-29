@@ -17,8 +17,8 @@ cat_rec = categories[4:]    # Recreational Activities
 
 logging.debug("loading data")
 
-train_data = fetch_20newsgroups(subset='train', shuffle=True, random_state=42)
-test_data = fetch_20newsgroups(subset='test', shuffle=True, random_state=42)
+train_data = fetch_20newsgroups(subset='train', categories=categories, shuffle=True, random_state=42)
+test_data = fetch_20newsgroups(subset='test', categories=categories, shuffle=True, random_state=42)
 
 logging.debug("loading finished")
 
