@@ -14,19 +14,11 @@ categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardw
 
 cat_comp = categories[:4]   # Computer Technologies
 cat_rec = categories[4:]    # Recreational Activities
-cat_sum_train = []          # training data size of each class 0-7
-train_data = []             # training data of each class 0-7
-cat_sum_test = []           # testing data size of each class 0-7
-test_data = []              # testing data of each class 0-7
 
 logging.debug("loading data")
 
-for i in range(len(categories)):
-    temp = fetch_20newsgroups(subset='train', categories=[categories[i]], shuffle=True, random_state=42)
-    train_data.append(temp)
-    cat_sum_train.append(len(temp.data))
-    temp = fetch_20newsgroups(subset='test', categories=[categories[i]], shuffle=True, random_state=42)
-    test_data.append(temp)
-    cat_sum_test.append(len(temp.data))
+train_data = fetch_20newsgroups(subset='train', shuffle=True, random_state=42)
+test_data = fetch_20newsgroups(subset='test', shuffle=True, random_state=42)
 
 logging.debug("loading finished")
+

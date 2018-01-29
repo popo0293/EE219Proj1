@@ -4,6 +4,15 @@ from global_data import *
 
 logging.debug("Problem a")
 
+cat_sum_train = []          # training data size of each class 0-7
+cat_sum_test = []           # testing data size of each class 0-7
+
+for i in range(len(categories)):
+    temp = fetch_20newsgroups(subset='train', categories=[categories[i]], shuffle=True, random_state=42)
+    cat_sum_train.append(len(temp.data))
+    temp = fetch_20newsgroups(subset='test', categories=[categories[i]], shuffle=True, random_state=42)
+    cat_sum_test.append(len(temp.data))
+
 y_pos = np.arange(len(categories))
 pl.figure(1)
 pl.barh(y_pos, cat_sum_train, align='center', color='blue', ecolor='black')

@@ -32,12 +32,16 @@ def stem_and_tokenize(doc):
     return [stemmer.stem(t) for t in tokens]
 
 
+tfidf_transformer = TfidfTransformer()
 
 
-test_string = ["Hello, Google. But I can't answer this call!"]
+'''
+test_string = ["Hello, Google. But I can't answer this call go going goes bowl bowls bowled!"]
+vectorizer = CountVectorizer(stop_words=ENGLISH_STOP_WORDS, tokenizer=stem_and_tokenize)
 X = vectorizer.fit_transform(test_string)
 feature_name = vectorizer.get_feature_names()
 
 print(feature_name)
 print(X.toarray())
 
+'''
