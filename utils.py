@@ -7,7 +7,7 @@ import nltk
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import RegexpTokenizer
 
-nltk.download("stopwords")
+nltk.download("stopwords")  # if the host does not have the package
 
 
 class SparseToDenseArray(BaseEstimator, TransformerMixin):
