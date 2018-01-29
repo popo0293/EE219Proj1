@@ -1,5 +1,5 @@
 import string
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer, ENGLISH_STOP_WORDS
+from sklearn.feature_extraction.text import *
 from sklearn.naive_bayes import MultinomialNB, GaussianNB
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.decomposition import NMF
@@ -34,7 +34,7 @@ def stem_and_tokenize(doc):
     return [stemmer.stem(t) for t in tokens]
 
 
-tfidf_transformer = TfidfTransformer()
+tfidf_transformer = TfidfTransformer(sublinear_tf=True, smooth_idf=False, use_idf=True)
 
 
 '''

@@ -30,10 +30,4 @@ pl.xlabel("Training size per class")
 pl.ylabel("Numbers")
 pl.show()
 
-sum = 0
-for i in cat_sum_train:
-    sum += i
-
-print(sum)
-
 logging.info("finished Problem a")
