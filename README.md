@@ -1,7 +1,10 @@
 # EE219 Project 1
 
-Team members:  
+### Team members:
+  
 Yichen Wu 504294181  
+email: wyc20020111@ucla.edu  
+
 Siyuan Chen 405024391
 
 ### Required Packages:
