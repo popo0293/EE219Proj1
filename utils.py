@@ -69,7 +69,7 @@ def test_stem_count_vectorize():
 
 
 def analyze(label, prob, predict, classes, n):
-    if n > 2:
+    if n <= 2:
         fpr, tpr, thresholds = roc_curve(label, prob)
         roc_auc = auc(fpr,tpr)
         plt.figure()
