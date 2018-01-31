@@ -1,6 +1,5 @@
 from utils import *
 from global_data import *
-# from d import *
 
 from sklearn.pipeline import Pipeline
 from sklearn.svm import LinearSVC
@@ -27,7 +26,7 @@ for ai, mdf in enumerate(min_df_arr):
         pred_test = pipeline_lsi.predict(test_data.data)
         pred_test_prob = pipeline_lsi.decision_function(test_data.data)
         print("-" * 70)
-        print("Using Min_df = %d and gamma = %d" % mdf, g)
+        print("Using Min_df = %d" % mdf," and gamma = %f" % g)
         analyze(test_label, pred_test_prob, pred_test)
 
 print("Now compare NMF and LSI")
@@ -37,17 +36,18 @@ method_name = ["LSI", "NMF"]
 
 for ai, method in enumerate(method_arr):
     for bi, g in enumerate(gamma):
-        pipeline_ = Pipeline([
+        pipeline_e = Pipeline([
             ('vect', CountVectorizer(min_df=MIN_DF, stop_words=ENGLISH_STOP_WORDS, tokenizer=stem_and_tokenize)),
             ('tfidf', TfidfTransformer()),
             ('reduce_dim', method),
             ('clf', LinearSVC(C=g)),
         ])
-        pipeline_lsi.fit(train_data.data, train_label)
-        pred_test = pipeline_lsi.predict(test_data.data)
-        pred_test_prob = pipeline_lsi.decision_function(test_data.data)
+        pipeline_e.fit(train_data.data, train_label)
+        pred_test = pipeline_e.predict(test_data.data)
+        pred_test_prob = pipeline_e.decision_function(test_data.data)
         print("-" * 70)
-        print("Using " + method_name[ai] + " and gamma = %d" % g)
+        print("Using min_df=2 (fixed from now on), " + method_name[ai] +
+              " ,and gamma = %f" % g)
         analyze(test_label, pred_test_prob, pred_test)
 
 logging.info("finished Problem e")
