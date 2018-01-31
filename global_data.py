@@ -6,6 +6,7 @@ from sklearn.datasets import fetch_20newsgroups
 # create logger
 fileConfig('logging_config.ini')
 logger = logging.getLogger()
+logger.setLevel("WARNING")
 
 categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware',
               'comp.sys.mac.hardware', 'rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']

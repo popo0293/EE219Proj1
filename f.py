@@ -56,4 +56,4 @@ for ai, method in enumerate(method_name):
     print("-" * 70)
 
 
-logging.info("finished Problem e")
+logging.info("finished Problem f")

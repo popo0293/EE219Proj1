@@ -87,10 +87,9 @@ def analyze(label, prob, predict):
     fpr, tpr, thresholds = roc_curve(label, prob)
     roc_auc = auc(fpr,tpr)
     plt.figure()
-    lw = 2
     plt.plot(fpr, tpr, color='lightsteelblue',
-    lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='deeppink', lw=lw, linestyle='--')
+             lw=2, label='AUC (area = %0.2f)' % roc_auc)
+    plt.plot([0, 1], [0, 1], color='deeppink', lw=2, linestyle='--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate')
@@ -98,23 +97,23 @@ def analyze(label, prob, predict):
     plt.title('Receiver operating characteristic')
     plt.legend(loc="lower right")
     plt.show()
-    cm = confusion_matrix(label, predict)
+    cmatrix = confusion_matrix(label, predict)
     classes = ["Computer Technology","Recreational Activity"]
-    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.BuGn)
+    plt.imshow(cmatrix, interpolation='nearest', cmap=plt.cm.BuGn)
     plt.title("Confusion Matrix")
-    plt.colorbar()
+    # plt.colorbar()
     tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
+    plt.xticks(tick_marks, classes, rotation=25)
     plt.yticks(tick_marks, classes)
     fmt = 'd'
-    thresh = cm.max() / 2.
+    thresh = cmatrix.max() / 2.
     for i, j in [(0,0),(0,1),(1,0),(1,1)]:
-        plt.text(j, i, format(cm[i, j], fmt),
+        plt.text(j, i, format(cmatrix[i, j], fmt),
                 horizontalalignment="center",
-                color="white" if cm[i, j] > thresh else "black")
+                color="white" if cmatrix[i, j] > thresh else "black")
     plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
+    plt.ylabel('True')
+    plt.xlabel('Predicted')
     plt.show()
 
     print("accuracy: ", accuracy_score(label, predict))
