@@ -22,7 +22,7 @@ for ai, mdf in enumerate(min_df_arr):
         pred_test_prob = pipeline_lsi.decision_function(test_data.data)
         print("-" * 70)
         print("Using Min_df = %d" % mdf," and gamma = %f" % g)
-        analyze(test_label, pred_test_prob, pred_test)
+        analyze(test_label, pred_test_prob, pred_test, CAT, 2)
 
 print("Now compare NMF and LSI")
 method_arr = [TruncatedSVD(n_components=50, n_iter=10, random_state=17),
@@ -43,6 +43,6 @@ for ai, method in enumerate(method_arr):
         print("-" * 70)
         print("Using min_df=2 (fixed from now on), " + method_name[ai] +
               " ,and gamma = %f" % g)
-        analyze(test_label, pred_test_prob, pred_test)
+        analyze(test_label, pred_test_prob, pred_test, CAT, 2)
 
 logging.info("finished Problem e")

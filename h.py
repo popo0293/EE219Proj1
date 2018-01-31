@@ -22,6 +22,6 @@ for ai, method in enumerate(method_arr):
     pred_test_prob = pipeline_h.predict_proba(test_data.data)[:, 1]
     print("-" * 70)
     print("Using " + method_name[ai] + " and Logistic Regression withuot regularization")
-    analyze(test_label, pred_test_prob, pred_test)
+    analyze(test_label, pred_test_prob, pred_test, CAT, 2)
 
 logging.info("finished Problem h")

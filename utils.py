@@ -15,6 +15,7 @@ from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
 import matplotlib.pyplot as plt
 import numpy as np
+import itertools
 
 '''
 try:
@@ -83,22 +84,23 @@ pipeline2 = Pipeline([
 '''
 
 
-def analyze(label, prob, predict):
-    fpr, tpr, thresholds = roc_curve(label, prob)
-    roc_auc = auc(fpr,tpr)
-    plt.figure()
-    plt.plot(fpr, tpr, color='lightsteelblue',
-             lw=2, label='AUC (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='deeppink', lw=2, linestyle='--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver operating characteristic')
-    plt.legend(loc="lower right")
-    plt.show()
+def analyze(label, prob, predict, classes, n):
+    if n > 2:
+        fpr, tpr, thresholds = roc_curve(label, prob)
+        roc_auc = auc(fpr,tpr)
+        plt.figure()
+        plt.plot(fpr, tpr, color='lightsteelblue',
+                 lw=2, label='AUC (area = %0.2f)' % roc_auc)
+        plt.plot([0, 1], [0, 1], color='deeppink', lw=2, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('Receiver operating characteristic')
+        plt.legend(loc="lower right")
+        plt.show()
+
     cmatrix = confusion_matrix(label, predict)
-    classes = ["Computer Technology","Recreational Activity"]
     plt.imshow(cmatrix, interpolation='nearest', cmap=plt.cm.BuGn)
     plt.title("Confusion Matrix")
     # plt.colorbar()
@@ -107,7 +109,7 @@ def analyze(label, prob, predict):
     plt.yticks(tick_marks, classes)
     fmt = 'd'
     thresh = cmatrix.max() / 2.
-    for i, j in [(0,0),(0,1),(1,0),(1,1)]:
+    for i, j in itertools.product(range(n), range(n)):
         plt.text(j, i, format(cmatrix[i, j], fmt),
                 horizontalalignment="center",
                 color="white" if cmatrix[i, j] > thresh else "black")

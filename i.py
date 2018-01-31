@@ -25,6 +25,6 @@ for ai, method in enumerate(method_arr):
         print("-" * 70)
         print("Using " + method_name[ai] +
               " and Logistic Regression with penalty: " + nm)
-        analyze(test_label, pred_test_prob, pred_test)
+        analyze(test_label, pred_test_prob, pred_test, CAT, 2)
 
 logging.info("finished Problem i")

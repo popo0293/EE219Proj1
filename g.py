@@ -23,7 +23,7 @@ for ai, method in enumerate(method_arr):
     print("-" * 70)
     print("Using " + method_name[ai] +
           " and Gaussian Naive Bayes")
-    analyze(test_label, pred_test_prob, pred_test)
+    analyze(test_label, pred_test_prob, pred_test, CAT, 2)
 
 pipeline_g2 = Pipeline([
     ('vect', CountVectorizer(min_df=MIN_DF, stop_words=ENGLISH_STOP_WORDS, tokenizer=stem_and_tokenize)),
@@ -36,6 +36,6 @@ pred_test = pipeline_g2.predict(test_data.data)
 pred_test_prob = pipeline_g2.predict_proba(test_data.data)[:, 1]
 print("-" * 70)
 print("Using NVM and Multinomial Naive Bayes")
-analyze(test_label, pred_test_prob, pred_test)
+analyze(test_label, pred_test_prob, pred_test, CAT, 2)
 
 logging.info("finished Problem g")

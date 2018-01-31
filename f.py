@@ -52,7 +52,7 @@ for ai, method in enumerate(method_name):
     pred_test_prob = pipeline_f.decision_function(test_data.data)
     print("-" * 70)
     print("Using method "+method+" and best gamma %f" % best_g[ai])
-    analyze(test_label, pred_test_prob, pred_test)
+    analyze(test_label, pred_test_prob, pred_test, CAT, 2)
     print("-" * 70)
 
 

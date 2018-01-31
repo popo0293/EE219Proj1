@@ -13,6 +13,7 @@ categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardw
 
 cat_comp = categories[:4]   # Computer Technologies
 cat_rec = categories[4:]    # Recreational Activities
+CAT = ["Computer Technologies", "Recreational Activities"]
 
 logging.info("loading data")
 # all_data = fetch_20newsgroups(subset='all', categories=categories, shuffle=True, random_state=42)
