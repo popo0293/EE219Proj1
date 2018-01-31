@@ -6,11 +6,6 @@ from sklearn.model_selection import cross_val_score
 
 logging.info("Problem f")
 
-# create labels
-# 0 for computer technology, 1 for recreational activities
-train_label = [(x//4) for x in train_data.target]
-test_label = [(x//4) for x in test_data.target]
-
 gamma = [1000, 100, 10, 1, 0.1, 0.01, 0.001]
 
 method_arr = [TruncatedSVD(n_components=50, n_iter=10, random_state=17),

@@ -6,11 +6,6 @@ from sklearn.svm import LinearSVC
 
 logging.info("Problem e")
 
-# create labels
-# 0 for computer technology, 1 for recreational activities
-train_label = [(x//4) for x in train_data.target]
-test_label = [(x//4) for x in test_data.target]
-
 # compare the effect of min_df with LSI only
 min_df_arr = [MIN_DF, 5]
 gamma = [1000, 0.001]

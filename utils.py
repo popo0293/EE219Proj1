@@ -90,7 +90,7 @@ def analyze(label, prob, predict):
     lw = 2
     plt.plot(fpr, tpr, color='lightsteelblue',
     lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='lavender', lw=lw, linestyle='--')
+    plt.plot([0, 1], [0, 1], color='deeppink', lw=lw, linestyle='--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate')
@@ -100,7 +100,7 @@ def analyze(label, prob, predict):
     plt.show()
     cm = confusion_matrix(label, predict)
     classes = ["Computer Technology","Recreational Activity"]
-    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.BuGn)
     plt.title("Confusion Matrix")
     plt.colorbar()
     tick_marks = np.arange(len(classes))
