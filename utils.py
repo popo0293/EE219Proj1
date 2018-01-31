@@ -67,22 +67,6 @@ def test_stem_count_vectorize():
     print(feature_name)
     print(X.toarray())
 
-'''
-pipeline1 = Pipeline([
-    ('vect', CountVectorizer(min_df=1, stop_words='english')),
-    ('tfidf', TfidfTransformer()),
-    ('reduce_dim', NMF(n_components=50, init='random', random_state=0)),
-    ('clf', MultinomialNB()),
-])
-pipeline2 = Pipeline([
-    ('vect', CountVectorizer(min_df=1, stop_words='english')),
-    ('tfidf', TfidfTransformer()),
-    ('reduce_dim', NMF(n_components=50, init='random', random_state=0)),
-    ('toarr', SparseToDenseArray()),
-    ('clf', GaussianNB()),
-])
-'''
-
 
 def analyze(label, prob, predict, classes, n):
     if n > 2:
