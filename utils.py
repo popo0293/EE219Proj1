@@ -103,6 +103,10 @@ def analyze(label, prob, predict, classes, n):
     plt.show()
 
     print("accuracy: ", accuracy_score(label, predict))
-    print("recall: ", recall_score(label, predict))
-    print("precision: ", precision_score(label, predict))
+    if n <= 2:
+        print("recall: ", recall_score(label, predict))
+        print("precision: ", precision_score(label, predict))
+    else:
+        print("recall: ", recall_score(label, predict, average='weighted'))
+        print("precision: ", precision_score(label, predict, average='weighted'))
     return

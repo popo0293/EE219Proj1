@@ -30,7 +30,7 @@ for ai, method in enumerate(method_arr):
         ])
         pipeline_j.fit(train_mult_data.data, train_mult_data.target)
         pred_test = pipeline_j.predict(test_mult_data.data)
-        pred_test_prob = pipeline_j.predict_proba(test_data.data)[:, 1]
+        pred_test_prob = []
         print("-" * 70)
         print("Using " + method_name[ai] +
               " and Learning algorithm: " + clf_name[bi])
