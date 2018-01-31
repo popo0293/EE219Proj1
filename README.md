@@ -15,3 +15,7 @@ matplotlib v2.1.2
 There are two ways to run the code
 > * Use Jupyter notebook: open *project1-Copy1.ipynb* and directly execute cells inside the notebook.
 > * Run individual questions directly: e.g. *python a.py*
+
+### Results
+A webpage snapshot is also provided:
+>* *ee219_project1_results.png*
